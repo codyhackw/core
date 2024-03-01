@@ -504,6 +504,46 @@ class InovelliSwitchTypeEntity(ZCLEnumSelectEntity):
     _attr_translation_key: str = "switch_type"
 
 
+class InovelliFanSingleTapBehavior(types.enum8):
+    """Inovelli fan switch cycle speed behavior."""
+
+    Hold_To_Cycle = 0x00
+    Tap_To_Cycle = 0x01
+    Tap_Down_Always_Off = 0x02
+
+
+@CONFIG_DIAGNOSTIC_MATCH(
+    cluster_handler_names=CLUSTER_HANDLER_INOVELLI, models={"VZM35-SN"}
+)
+class InovelliFanSingleTapBehaviorEntity(ZCLEnumSelectEntity):
+    """Inovelli fan switch cycle speed behavior control."""
+
+    _unique_id_suffix = "fan_single_tap_behavior"
+    _attribute_name = "fan_single_tap_behavior"
+    _enum = InovelliFanSingleTapBehavior
+    _attr_translation_key: str = "fan_single_tap_behavior"
+
+
+class InovelliFanModuleBindingControl(types.enum8):
+    """Inovelli fan switch bind to canopy module mode."""
+
+    Disabled = 0x00
+    Multi_Tap = 0x01
+    Tap_to_Cycle = 0x02
+
+
+@CONFIG_DIAGNOSTIC_MATCH(
+    cluster_handler_names=CLUSTER_HANDLER_INOVELLI, models={"VZM35-SN"}
+)
+class InovelliFanModuleBindingControlEntity(ZCLEnumSelectEntity):
+    """Inovelli fan switch bind to canopy module mode control."""
+
+    _unique_id_suffix = "fan_module_binding_control"
+    _attribute_name = "fan_module_binding_control"
+    _enum = InovelliFanModuleBindingControl
+    _attr_translation_key: str = "fan_module_binding_control"
+
+
 class InovelliFanSwitchType(types.enum1):
     """Inovelli fan switch mode."""
 

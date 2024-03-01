@@ -779,7 +779,7 @@ class InovelliAutoShutoffTimer(ZHANumberConfigurationEntity):
 
 
 @CONFIG_DIAGNOSTIC_MATCH(
-    cluster_handler_names=CLUSTER_HANDLER_INOVELLI, models={"VZM35-SN"}
+    cluster_handler_names=CLUSTER_HANDLER_INOVELLI, models={"VZM35-SN", "VZM36"}
 )
 # pylint: disable-next=hass-invalid-inheritance # needs fixing
 class InovelliQuickStartTime(ZHANumberConfigurationEntity):
@@ -792,6 +792,62 @@ class InovelliQuickStartTime(ZHANumberConfigurationEntity):
     _attr_native_max_value: float = 10
     _attribute_name = "quick_start_time"
     _attr_translation_key: str = "quick_start_time"
+
+
+@CONFIG_DIAGNOSTIC_MATCH(cluster_handler_names=CLUSTER_HANDLER_INOVELLI)
+# pylint: disable-next=hass-invalid-inheritance # needs fixing
+class InovelliQuickStartTime(ZHANumberConfigurationEntity):
+    """Inovelli fan quick start time configuration entity."""
+
+    _unique_id_suffix = "quick_start_level"
+    _attr_entity_category = EntityCategory.CONFIG
+    _attr_icon: str = ICONS[3]
+    _attr_native_min_value: float = 1
+    _attr_native_max_value: float = 254
+    _attribute_name = "quick_start_level"
+    _attr_translation_key: str = "quick_start_level"
+
+
+@CONFIG_DIAGNOSTIC_MATCH(cluster_handler_names=CLUSTER_HANDLER_INOVELLI)
+# pylint: disable-next=hass-invalid-inheritance # needs fixing
+class InovelliLowBoundControl(ZHANumberConfigurationEntity):
+    """Inovelli fan speed for bound low control."""
+
+    _unique_id_suffix = "low_for_bound_control"
+    _attr_entity_category = EntityCategory.CONFIG
+    _attr_icon: str = ICONS[3]
+    _attr_native_min_value: float = 2
+    _attr_native_max_value: float = 254
+    _attribute_name = "low_for_bound_control"
+    _attr_translation_key: str = "low_for_bound_control"
+
+
+@CONFIG_DIAGNOSTIC_MATCH(cluster_handler_names=CLUSTER_HANDLER_INOVELLI)
+# pylint: disable-next=hass-invalid-inheritance # needs fixing
+class InovelliMediumBoundControl(ZHANumberConfigurationEntity):
+    """Inovelli fan speed for bound medium control."""
+
+    _unique_id_suffix = "medium_for_bound_control"
+    _attr_entity_category = EntityCategory.CONFIG
+    _attr_icon: str = ICONS[3]
+    _attr_native_min_value: float = 2
+    _attr_native_max_value: float = 254
+    _attribute_name = "medium_for_bound_control"
+    _attr_translation_key: str = "medium_for_bound_control"
+
+
+@CONFIG_DIAGNOSTIC_MATCH(cluster_handler_names=CLUSTER_HANDLER_INOVELLI)
+# pylint: disable-next=hass-invalid-inheritance # needs fixing
+class InovelliHighBoundControl(ZHANumberConfigurationEntity):
+    """Inovelli fan speed for bound high control."""
+
+    _unique_id_suffix = "high_for_bound_control"
+    _attr_entity_category = EntityCategory.CONFIG
+    _attr_icon: str = ICONS[3]
+    _attr_native_min_value: float = 2
+    _attr_native_max_value: float = 254
+    _attribute_name = "high_for_bound_control"
+    _attr_translation_key: str = "high_for_bound_control"
 
 
 @CONFIG_DIAGNOSTIC_MATCH(cluster_handler_names=CLUSTER_HANDLER_INOVELLI)
@@ -862,6 +918,20 @@ class InovelliDefaultAllLEDOffIntensity(ZHANumberConfigurationEntity):
     _attr_native_max_value: float = 100
     _attribute_name = "led_intensity_when_off"
     _attr_translation_key: str = "led_intensity_when_off"
+
+
+@CONFIG_DIAGNOSTIC_MATCH(cluster_handler_names=CLUSTER_HANDLER_INOVELLI)
+# pylint: disable-next=hass-invalid-inheritance # needs fixing
+class InovelliLEDColorCeilingFanMode(ZHANumberConfigurationEntity):
+    """Inovelli default led color when in ceiling fan mode configuration entity."""
+
+    _unique_id_suffix = "led_color_for_bound_control"
+    _attr_entity_category = EntityCategory.CONFIG
+    _attr_icon: str = ICONS[15]
+    _attr_native_min_value: float = 0
+    _attr_native_max_value: float = 255
+    _attribute_name = "led_color_for_bound_control"
+    _attr_translation_key: str = "led_color_for_bound_control"
 
 
 @CONFIG_DIAGNOSTIC_MATCH(cluster_handler_names=CLUSTER_HANDLER_INOVELLI)
